@@ -1,11 +1,10 @@
 package com.backend.backend.Controllers;
 
 import com.backend.backend.Domain.Dtos.WorkoutDto;
+import com.backend.backend.Domain.Entity.Workout;
 import com.backend.backend.Mappers.WorkoutMapper;
 import com.backend.backend.Services.WorkoutService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +26,12 @@ public class WorkoutController {
                 .map(workoutMapper::toDto)
                 .toList();
     }
+
+    @PostMapping
+    public WorkoutDto createWorkout(@RequestBody WorkoutDto workoutDto){
+       Workout createdWorkout =  workoutService.CreateWorkout(workoutMapper.fromDto(workoutDto));
+       return workoutMapper.toDto(createdWorkout);
+    }
+
 
 }

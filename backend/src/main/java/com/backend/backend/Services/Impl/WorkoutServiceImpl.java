@@ -5,6 +5,7 @@ import com.backend.backend.Repository.WorkoutRepository;
 import com.backend.backend.Services.WorkoutService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -23,8 +24,22 @@ public class WorkoutServiceImpl implements WorkoutService {
 
     @Override
     public Workout CreateWorkout(Workout workout) {
-        if(null != workout.getId()){}
+        if(null != workout.getId()){
         throw  new IllegalArgumentException("Workout already has an id!");
-        return null ;
+        }
+        if (workout.getTitle() == null || workout.getTitle().isBlank()
+                || workout.getReps() == null || workout.getLoad() == null){
+            throw new IllegalArgumentException("Workout must contain all the fields!");
+        };
+        LocalDateTime now = LocalDateTime.now();
+        return workoutRepository.save(new Workout(
+                null,
+                workout.getTitle(),
+                workout.getReps(),
+                workout.getLoad(),
+                now,
+                now,
+                now
+        ));
     }
 }

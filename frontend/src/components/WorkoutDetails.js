@@ -3,6 +3,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
+  console.log("This is the workout data coming from the backend",workout)
 
   const handleClick = async () => {
     const response = await fetch("/api/workouts/" + workout._id, {
@@ -14,6 +15,10 @@ const WorkoutDetails = ({ workout }) => {
       dispatch({ type: "DELETE_WORKOUT", payload: json });
     }
   };
+  // Remove microseconds and convert to valid ISO string
+  const raw = workout.dueDate;
+  const iso = raw.split('.')[0]; // "2025-06-15T15:33:21"
+  const date = new Date(iso);
 
   return (
     <div className="workout-details">
@@ -27,7 +32,7 @@ const WorkoutDetails = ({ workout }) => {
         {workout.reps}
       </p>
       <p>
-        {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
+        {formatDistanceToNow(date, { addSuffix: true })}
       </p>
       <span className="delete-btn" onClick={handleClick}>
         delete

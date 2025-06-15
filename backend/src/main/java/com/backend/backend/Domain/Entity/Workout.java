@@ -1,4 +1,4 @@
-package com.backend.backend.Domain.Entity.Workout;
+package com.backend.backend.Domain.Entity;
 
 
 import jakarta.persistence.*;
@@ -23,6 +23,7 @@ constructors and tostring for the workout entity
 public class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(updatable = false,nullable = false)
     private UUID id;
 
     @Column(nullable = false)
@@ -33,6 +34,9 @@ public class Workout {
 
     @Column(nullable = false)
     private Integer load;
+
+    @Column(nullable = false,updatable = false)
+    private LocalDateTime dueDate;
 
     @Column
     private LocalDateTime createdAt;

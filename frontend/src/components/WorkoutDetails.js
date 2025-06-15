@@ -6,13 +6,13 @@ const WorkoutDetails = ({ workout }) => {
   console.log("This is the workout data coming from the backend",workout)
 
   const handleClick = async () => {
-    const response = await fetch("/api/workouts/" + workout._id, {
+    const response = await fetch('http://localhost:8080/workouts/' + workout.Id, {
       method: "DELETE",
     });
-    const json = await response.json();
+    // const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_WORKOUT", payload: json });
+      dispatch({ type: "DELETE_WORKOUT", payload: workout});
     }
   };
   // Remove microseconds and convert to valid ISO string

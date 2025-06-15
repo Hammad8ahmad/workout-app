@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class WorkoutServiceImpl implements WorkoutService {
@@ -41,5 +42,10 @@ public class WorkoutServiceImpl implements WorkoutService {
                 now,
                 now
         ));
+    }
+
+    @Override
+    public void DeleteWorkout(UUID Id) {
+        workoutRepository.deleteById(Id);
     }
 }

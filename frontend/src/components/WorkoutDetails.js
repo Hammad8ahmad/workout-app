@@ -30,7 +30,7 @@ const WorkoutDetails = ({ workout }) => {
       reps: newReps,
     };
 
-    const response = await fetch(`http://localhost:8080/workouts/${workout.Id}`, {
+    const response = await fetch('http://localhost:8080/workouts/' + workout.Id, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedWorkout),

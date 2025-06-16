@@ -43,5 +43,15 @@ public class WorkoutController {
     public void  deleteWorkout(@PathVariable("workout_id") UUID Id){
         workoutService.DeleteWorkout(Id);
     }
+//   Update a workout
 
+    @PutMapping(path = "/{workout_id}")
+    public WorkoutDto updatedWorkout(
+            @PathVariable("workout_id") UUID Id,
+            @RequestBody WorkoutDto workoutDto
+    ){
+       Workout updatedWorkout =  workoutService.UpdateWorkout(Id,workoutMapper
+               .fromDto(workoutDto));
+       return workoutMapper.toDto(updatedWorkout);
+    }
 }

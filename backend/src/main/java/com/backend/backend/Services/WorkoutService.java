@@ -9,4 +9,5 @@ public interface WorkoutService {
     List<Workout> ListOfWorkouts();
     Workout CreateWorkout(Workout workout);
     void DeleteWorkout(UUID Id);
+    Workout UpdateWorkout(UUID Id, Workout workout);
 }

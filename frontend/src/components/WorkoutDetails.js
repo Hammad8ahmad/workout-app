@@ -1,42 +1,92 @@
+import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
-  console.log("This is the workout data coming from the backend",workout)
 
-  const handleClick = async () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [newTitle, setNewTitle] = useState(workout.title);
+  const [newLoad, setNewLoad] = useState(workout.load);
+  const [newReps, setNewReps] = useState(workout.reps);
+
+  const handleDelete = async () => {
     const response = await fetch('http://localhost:8080/workouts/' + workout.Id, {
       method: "DELETE",
     });
-    // const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_WORKOUT", payload: workout});
+      dispatch({ type: "DELETE_WORKOUT", payload: workout });
     }
   };
-  // Remove microseconds and convert to valid ISO string
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+
+    const updatedWorkout = {
+      ...workout,
+      title: newTitle,
+      load: newLoad,
+      reps: newReps,
+    };
+
+    const response = await fetch(`http://localhost:8080/workouts/${workout.Id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedWorkout),
+    });
+
+    if (response.ok) {
+      const json = await response.json();
+      dispatch({ type: "UPDATE_WORKOUT", payload: json });
+      setIsEditing(false);
+    }
+  };
+
+  // Convert dueDate string to Date object
   const raw = workout.dueDate;
-  const iso = raw.split('.')[0]; // "2025-06-15T15:33:21"
+  const iso = raw.split('.')[0];
   const date = new Date(iso);
 
   return (
     <div className="workout-details">
-      <h4>{workout.title}</h4>
-      <p>
-        <strong>Load (kg): </strong>
-        {workout.load}
-      </p>
-      <p>
-        <strong>Number of reps: </strong>
-        {workout.reps}
-      </p>
-      <p>
-        {formatDistanceToNow(date, { addSuffix: true })}
-      </p>
-      <span className="delete-btn" onClick={handleClick}>
-        delete
-      </span>
+      {isEditing ? (
+        <form onSubmit={handleUpdate} className="edit-form">
+          <input
+            type="text"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            required
+          />
+          <input
+            type="number"
+            value={newLoad}
+            onChange={(e) => setNewLoad(e.target.value)}
+            required
+          />
+          <input
+            type="number"
+            value={newReps}
+            onChange={(e) => setNewReps(e.target.value)}
+            required
+          />
+          <button type="submit" className="edit-btn">Update</button>
+          <button type="button" className="delete-btn" onClick={() => setIsEditing(false)}>Cancel</button>
+        </form>
+      ) : (
+        <>
+          <div className="details">
+            <h4>{workout.title}</h4>
+            <p><strong>Load (kg): </strong>{workout.load}kg</p>
+            <p><strong>Number of reps: </strong>{workout.reps}</p>
+            <p>{formatDistanceToNow(date, { addSuffix: true })}</p>
+          </div>
+          <div className="buttons">
+            <span className="delete-btn" onClick={handleDelete}>delete</span>
+            <span className="edit-btn" onClick={() => setIsEditing(true)}>edit</span>
+          </div>
+        </>
+      )}
     </div>
   );
 };

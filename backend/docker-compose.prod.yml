@@ -1,0 +1,21 @@
+services:
+  backend:
+    image: workout-app-backend:latest  # Use the image you built manually
+    ports:
+      - "8086:8080"
+    env_file:
+      - .env.prod
+    depends_on:
+      - db
+    command: ["java", "-jar", "/app/app.jar"]
+
+  db:
+    image: postgres:latest
+    restart: always
+    env_file:
+      - .env.prod
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

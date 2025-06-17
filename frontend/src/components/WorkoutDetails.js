@@ -92,6 +92,8 @@ const WorkoutDetails = ({ workout }) => {
         </>
       )}
     </div>
+
+    
   );
 };
 

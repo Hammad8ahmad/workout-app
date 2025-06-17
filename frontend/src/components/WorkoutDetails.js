@@ -10,8 +10,12 @@ const WorkoutDetails = ({ workout }) => {
   const [newLoad, setNewLoad] = useState(workout.load);
   const [newReps, setNewReps] = useState(workout.reps);
 
+  const URL = process.env.REACT_APP_URL;
+  console.log("this is the url",URL)
+
+
   const handleDelete = async () => {
-    const response = await fetch('http://localhost:8080/workouts/' + workout.Id, {
+    const response = await fetch(`${URL}/workouts/${workout.Id}`, {
       method: "DELETE",
     });
 
@@ -30,7 +34,7 @@ const WorkoutDetails = ({ workout }) => {
       reps: newReps,
     };
 
-    const response = await fetch('http://localhost:8080/workouts/' + workout.Id, {
+    const response = await fetch(`${URL}/workouts/${workout.Id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedWorkout),

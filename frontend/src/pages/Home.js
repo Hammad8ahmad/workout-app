@@ -8,18 +8,28 @@ import WorkoutForm from "../components/WorkoutForm"
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext()
 
+     
+
+    // const BASE_URL = "http://65.0.124.76:8086";
+    // console.log("BASE_URL = ", process.env.REACT_APP_API_URL);
+     const URL = process.env.REACT_APP_URL;
+      console.log("this is the url",URL)
+
+
+
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('http://localhost:8086/workouts');
+     
+      const response = await fetch(`${URL}/workouts`);
+      console.log("this is the response",response)
       const json = await response.json()
 
       if (response.ok) {
         dispatch({type: 'SET_WORKOUTS', payload: json})
       }
     }
-
     fetchWorkouts()
-  }, [dispatch])
+  }, [dispatch,URL])
 
   return (
     <div className="home">

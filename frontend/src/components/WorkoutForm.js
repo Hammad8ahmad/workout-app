@@ -9,18 +9,23 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState('')
   const [error, setError] = useState(null)
 
+  const URL = process.env.REACT_APP_URL;
+  // const BASE_URL = "http://65.0.124.76:8086";
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const workout = {title, load, reps}
     
-    const response = await fetch('http://localhost:8080/workouts', {
+    const response = await fetch(`${URL}/workouts`, {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
         'Content-Type': 'application/json'
       }
     })
+    console.log("responsein post",response)
     const json = await response.json()
 
     if (!response.ok) {

@@ -26,6 +26,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd ~/workout-backend
             git pull origin master
+            rm -rf frontend
+            cd backend
             docker-compose down
             docker-compose up -d --build
           EOF

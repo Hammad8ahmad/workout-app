@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")  // apply to all paths
-                        .allowedOrigins("http://localhost:3000","https://workout-app-hammad8ahmads-projects.vercel.app/")  // allow your frontend
+                        .allowedOrigins("http://localhost:3000","https://workout-app-hammad8ahmads-projects.vercel.app/","https://workout-backend.duckdns.org")  // allow your frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowCredentials(true);  // if using cookies or auth headers
             }

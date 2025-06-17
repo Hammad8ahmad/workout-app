@@ -1,4 +1,37 @@
-# .github/workflows/deploy.yml
+# # .github/workflows/deploy.yml
+# name: Deploy to EC2
+
+# on:
+#   push:
+#     branches:
+#       - master
+#     paths:
+#       - '**'
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v4
+
+#       - name: Set up SSH
+#         uses: webfactory/ssh-agent@v0.9.0
+#         with:
+#           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+#       - name: SSH & Deploy to EC2
+#         run: |
+#           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+#             cd ~/workout-backend
+#             git pull origin master
+#             rm -rf frontend
+#             cd backend
+#             docker-compose down
+#             docker-compose up -d --build
+#           EOF
+
 name: Deploy to EC2
 
 on:
@@ -24,10 +57,17 @@ jobs:
       - name: SSH & Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            if [ ! -d ~/workout-backend ]; then
+              git clone https://github.com/${{ github.repository }} ~/workout-backend
+            else
+              cd ~/workout-backend
+              git pull origin master
+            fi
+
             cd ~/workout-backend
-            git pull origin master
             rm -rf frontend
             cd backend
+
             docker-compose down
             docker-compose up -d --build
           EOF

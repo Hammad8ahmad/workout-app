@@ -10,9 +10,7 @@ const WorkoutForm = () => {
   const [error, setError] = useState(null)
 
   const URL = process.env.REACT_APP_URL;
-  // const BASE_URL = "http://65.0.124.76:8086";
-
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
 

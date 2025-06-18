@@ -93,6 +93,8 @@ const WorkoutDetails = ({ workout }) => {
       )}
     </div>
 
+
+
     
   );
 };

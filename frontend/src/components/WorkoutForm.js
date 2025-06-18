@@ -22,8 +22,7 @@ const handleSubmit = async (e) => {
       body: JSON.stringify(workout),
       headers: {
         'Content-Type': 'application/json'
-      },
-      credentials: 'include' // only if needed for cookies
+      }// only if needed for cookies
     });
 
     const text = await response.text(); // Read response as text

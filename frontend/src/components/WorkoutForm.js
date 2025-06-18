@@ -12,43 +12,48 @@ const WorkoutForm = () => {
   const URL = process.env.REACT_APP_URL;
 
 const handleSubmit = async (e) => {
-  e.preventDefault()
+  e.preventDefault();
 
-  const workout = { title, load, reps }
+  const workout = { title, load, reps };
 
   try {
     const response = await fetch(`${URL}/workouts`, {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-    })
+      credentials: 'include' // only if needed for cookies
+    });
 
-    const text = await response.text()
-    let json = null
+    const text = await response.text(); // Read response as text
 
+    let json;
     try {
-      json = JSON.parse(text)
+      json = JSON.parse(text); // Try to parse JSON
     } catch (err) {
-      console.error("Failed to parse response as JSON", err)
+      console.error('❌ Backend did not return JSON:', text);
+      throw new Error('Invalid JSON response: ' + text);
     }
 
     if (!response.ok) {
-      setError(json?.error || 'Unexpected error occurred')
-      console.log("Error:", json)
-    } else {
-      setError(null)
-      setTitle('')
-      setLoad('')
-      setReps('')
-      dispatch({ type: 'CREATE_WORKOUT', payload: json })
+      setError(json.error || 'Something went wrong');
+      return;
     }
+
+    // Success
+    setError(null);
+    setTitle('');
+    setLoad('');
+    setReps('');
+    dispatch({ type: 'CREATE_WORKOUT', payload: json });
+
   } catch (err) {
-    console.error("Network or fetch error:", err)
-    setError("Network error")
+    console.error('❌ Submit error:', err.message);
+    setError(err.message);
   }
-}
+};
+
 
   return (
     <form className="create" onSubmit={handleSubmit}> 

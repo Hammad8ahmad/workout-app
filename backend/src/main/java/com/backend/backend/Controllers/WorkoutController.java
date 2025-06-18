@@ -15,6 +15,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/workouts")
+@CrossOrigin(
+        originPatterns = "https://workout-app-ten-ashen.vercel.app",  // Use `originPatterns` if using wildcards
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS},
+        allowedHeaders = "*",
+        allowCredentials = "false"  // true if you're using cookies (you're not)
+)
 public class WorkoutController {
     private final WorkoutService workoutService;
     private final WorkoutMapper workoutMapper;

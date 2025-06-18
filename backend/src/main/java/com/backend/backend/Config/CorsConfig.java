@@ -5,21 +5,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration  // tells Spring this is a configuration class
+@Configuration
 public class CorsConfig {
-    @Bean  // makes this CORS config available to the app
+    @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")  // apply to all paths
-                        .allowedOrigins("http://localhost:3000",
-                                "https://workout-app-hammad8ahmads-projects.vercel.app",
-                                "https://workout-backend.duckdns.org",
-                                "https://workout-app-ten-ashen.vercel.app"
-                                )  // allow your frontend
-                        .allowedMethods("GET", "POST", "PUT", "DELETE","OPTIONS")
-                        .allowCredentials(true);  // if using cookies or auth headers
+                registry.addMapping("/**")
+                        .allowedOriginPatterns(
+                                "http://localhost:3000",
+                                "https://*.vercel.app",
+                                "https://workout-backend.duckdns.org"
+                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowCredentials(true);
             }
         };
     }

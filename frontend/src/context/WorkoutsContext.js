@@ -36,4 +36,6 @@ export const WorkoutsContextProvider = ({ children }) => {
       { children }
     </WorkoutsContext.Provider>
   )
+
+  
 }

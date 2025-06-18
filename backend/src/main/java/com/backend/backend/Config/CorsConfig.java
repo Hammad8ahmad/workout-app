@@ -18,7 +18,7 @@ public class CorsConfig {
                                 "https://workout-backend.duckdns.org",
                                 "https://workout-app-ten-ashen.vercel.app/"
                                 )  // allow your frontend
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE","OPTIONS")
                         .allowCredentials(true);  // if using cookies or auth headers
             }
         };

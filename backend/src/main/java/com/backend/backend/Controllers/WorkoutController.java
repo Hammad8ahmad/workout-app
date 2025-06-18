@@ -15,7 +15,9 @@ import java.util.UUID;
 @RequestMapping(path = "/workouts")
 @CrossOrigin(
         origins = {
-                "http://localhost:3000",
+                "http://localhost:8080",
+                "http://localhost:8080",
+                "https://workout-backend.duckdns.org/",
                 "https://*.vercel.app",  // wildcard won't work here in old Spring versions
                 "https://workout-app-ten-ashen.vercel.app/",
                 "https://workout-app-hammad8ahmads-projects.vercel.app/"

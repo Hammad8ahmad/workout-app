@@ -12,51 +12,34 @@ const WorkoutForm = () => {
   const URL = process.env.REACT_APP_URL;
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault()
 
-  const workout = { title, load, reps };
 
-  try {
+    
+    const workout = {title, load, reps}
+    
     const response = await fetch(`${URL}/workouts`, {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
         'Content-Type': 'application/json'
       }
-    });
+    })
+    console.log("responsein post",response)
+    const json = await response.json()
 
-    console.log("response in post", response);
-
-    // Handle non-OK status (e.g. 502, 400)
     if (!response.ok) {
-      let errorMessage = 'An error occurred';
-      try {
-        const errorJson = await response.json();
-        errorMessage = errorJson.error || errorMessage;
-      } catch (err) {
-        const text = await response.text(); // fallback to text
-        errorMessage = text || errorMessage;
-      }
-
-      setError(errorMessage);
-      return;
+      setError(json.error)
+    }
+    if (response.ok) {
+      setError(null)
+      setTitle('')
+      setLoad('')
+      setReps('')
+      dispatch({type: 'CREATE_WORKOUT', payload: json})
     }
 
-    // Parse success JSON
-    const json = await response.json();
-
-    // Clear form
-    setError(null);
-    setTitle('');
-    setLoad('');
-    setReps('');
-    dispatch({ type: 'CREATE_WORKOUT', payload: json });
-  } catch (err) {
-    console.error("POST request failed:", err);
-    setError("Failed to connect to server");
   }
-};
-
 
   return (
     <form className="create" onSubmit={handleSubmit}> 
@@ -68,8 +51,6 @@ const WorkoutForm = () => {
         onChange={(e) => setTitle(e.target.value)} 
         value={title}
       />
-
-
 
       <label>Load (in kg):</label>
       <input 

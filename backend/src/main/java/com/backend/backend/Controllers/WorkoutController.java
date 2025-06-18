@@ -10,17 +10,18 @@ import java.util.List;
 import java.util.UUID;
 
 
+
+@RestController
+@RequestMapping(path = "/workouts")
 @CrossOrigin(
         origins = {
                 "http://localhost:3000",
                 "https://*.vercel.app",  // wildcard won't work here in old Spring versions
-                "https://workout-app-ten-ashen.vercel.app",
-                "https://workout-app-hammad8ahmads-projects.vercel.app"
+                "https://workout-app-ten-ashen.vercel.app/",
+                "https://workout-app-hammad8ahmads-projects.vercel.app/"
         },
         allowCredentials = "true"
 )
-@RestController
-@RequestMapping(path = "/workouts")
 public class WorkoutController {
     private final WorkoutService workoutService;
     private final WorkoutMapper workoutMapper;

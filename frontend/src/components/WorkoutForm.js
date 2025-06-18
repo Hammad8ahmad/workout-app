@@ -11,37 +11,44 @@ const WorkoutForm = () => {
 
   const URL = process.env.REACT_APP_URL;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+const handleSubmit = async (e) => {
+  e.preventDefault()
 
+  const workout = { title, load, reps }
 
-    
-
-    
-    const workout = {title, load, reps}
-    
+  try {
     const response = await fetch(`${URL}/workouts`, {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     })
-    console.log("responsein post",response)
-    const json = await response.json()
+
+    const text = await response.text()
+    let json = null
+
+    try {
+      json = JSON.parse(text)
+    } catch (err) {
+      console.error("Failed to parse response as JSON", err)
+    }
 
     if (!response.ok) {
-      setError(json.error)
-    }
-    if (response.ok) {
+      setError(json?.error || 'Unexpected error occurred')
+      console.log("Error:", json)
+    } else {
       setError(null)
       setTitle('')
       setLoad('')
       setReps('')
-      dispatch({type: 'CREATE_WORKOUT', payload: json})
+      dispatch({ type: 'CREATE_WORKOUT', payload: json })
     }
-
+  } catch (err) {
+    console.error("Network or fetch error:", err)
+    setError("Network error")
   }
+}
 
   return (
     <form className="create" onSubmit={handleSubmit}> 

@@ -11,16 +11,15 @@ import java.util.UUID;
 
 
 
+
+
 @RestController
 @RequestMapping(path = "/workouts")
 @CrossOrigin(
-        origins = {
-                "http://localhost:3000",
-                "https://workout-app-hammad8ahmads-projects.vercel.app",
-                "https://workout-app-ten-ashen.vercel.app"
-        },
-        allowCredentials = "true",
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
+        origins = "https://workout-app-ten-ashen.vercel.app",
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS},
+        allowedHeaders = "*",
+        allowCredentials = "false"  // <== set false since you're not using cookies
 )
 public class WorkoutController {
     private final WorkoutService workoutService;

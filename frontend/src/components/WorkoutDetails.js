@@ -10,7 +10,8 @@ const WorkoutDetails = ({ workout }) => {
   const [newLoad, setNewLoad] = useState(workout.load);
   const [newReps, setNewReps] = useState(workout.reps);
 
-   const URL ='http://localhost:8080';
+       const URL = process.env.REACT_APP_API_URL;
+
 
   console.log("this is the url",URL)
 

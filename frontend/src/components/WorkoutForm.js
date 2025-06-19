@@ -9,7 +9,7 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState('')
   const [error, setError] = useState(null)
 
-  const URL ='http://localhost:8080';
+    const URL = process.env.REACT_APP_API_URL;
 
 
 

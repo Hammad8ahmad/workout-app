@@ -45,6 +45,7 @@ jobs:
 
             # Deploy backend
             cd backend
+            docker system prune -af
             docker-compose -f docker-compose.prod.yml down -v
             docker-compose -f docker-compose.prod.yml up -d --build
           EOF

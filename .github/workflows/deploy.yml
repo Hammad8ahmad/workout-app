@@ -45,6 +45,7 @@ jobs:
 
             # Deploy backend
             cd backend
+            chmod +x ./mvnw
             ./mvnw clean package -DskipTests
             docker build -t workout-app-backend .
             docker-compose -f docker-compose.prod.yml down -v

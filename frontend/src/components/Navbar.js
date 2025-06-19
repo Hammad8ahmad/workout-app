@@ -7,6 +7,15 @@ const Navbar = () => {
         <Link to="/">
           <h1>Workout App</h1>
         </Link>
+        <div className="links">
+          <Link to="/about">
+           <h1>About</h1>
+          </Link>
+        
+          <Link to="/workouts">
+           <h1>Workouts</h1>
+          </Link>
+          </div>
       </div>
     </header>
   );

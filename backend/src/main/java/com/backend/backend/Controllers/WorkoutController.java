@@ -11,12 +11,11 @@ import java.util.UUID;
 
 
 
-
 @CrossOrigin(
-        originPatterns = "https://workout-app-ten-ashen.vercel.app",  // Use `originPatterns` if using wildcards
+        originPatterns = {"https://workout-app-ten-ashen.vercel.app", "http://localhost:3000"},
         methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS},
         allowedHeaders = "*",
-        allowCredentials = "false"  // true if you're using cookies (you're not)
+        allowCredentials = "false" // ✅ You’re not using cookies, so this can be false
 )
 @RestController
 @RequestMapping(path = "/workouts")

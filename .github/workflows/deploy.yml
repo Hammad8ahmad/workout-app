@@ -45,8 +45,8 @@ jobs:
 
             # Deploy backend
             cd backend
-            docker system prune -f
             ./mvnw clean package -DskipTests
+            docker build -t workout-app-backend .
             docker-compose -f docker-compose.prod.yml down -v
-            docker-compose -f docker-compose.prod.yml up -d --build
+            docker-compose -f docker-compose.prod.yml up -d 
           EOF

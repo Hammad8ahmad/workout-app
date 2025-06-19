@@ -9,7 +9,7 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState('')
   const [error, setError] = useState(null)
 
-    const URL = process.env.REACT_APP_API_URL;
+    const URL = process.env.REACT_APP_URL;
 
 
 

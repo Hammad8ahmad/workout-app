@@ -10,7 +10,7 @@ const WorkoutDetails = ({ workout }) => {
   const [newLoad, setNewLoad] = useState(workout.load);
   const [newReps, setNewReps] = useState(workout.reps);
 
-       const URL = process.env.REACT_APP_API_URL;
+       const URL = process.env.REACT_APP_URL;
 
 
   console.log("this is the url",URL)

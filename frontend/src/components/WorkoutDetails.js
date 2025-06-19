@@ -95,6 +95,8 @@ const WorkoutDetails = ({ workout }) => {
 
 
 
+
+
     
   );
 };

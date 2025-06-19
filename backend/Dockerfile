@@ -11,4 +11,4 @@ COPY target/backend-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 # Default command (redundant since you defined `command:` in docker-compose, but good for Docker run)
-CMD ["java", "-jar", "/app/target/backend.jar"]
+CMD ["java", "-jar", "/app/app.jar"]

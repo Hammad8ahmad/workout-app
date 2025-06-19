@@ -7,7 +7,6 @@ services:
       - .env.prod
     depends_on:
       - db
-    command: ["java", "-jar", "/app/app.jar"]
 
   db:
     image: postgres:latest

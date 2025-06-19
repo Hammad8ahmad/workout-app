@@ -12,3 +12,4 @@ EXPOSE 8080
 
 # Default command (redundant since you defined `command:` in docker-compose, but good for Docker run)
 CMD ["java", "-jar", "/app/app.jar"]
+

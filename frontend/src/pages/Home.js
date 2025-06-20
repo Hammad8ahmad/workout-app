@@ -8,7 +8,7 @@ import WorkoutForm from "../components/WorkoutForm"
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext()
 
-  
+
      
 
     // const BASE_URL = "http://65.0.124.76:8086";
@@ -24,6 +24,7 @@ const Home = () => {
       const response = await fetch(`${URL}/workouts`);
       console.log("this is the response",response)
       const json = await response.json()
+      console.log("this is the response json object,",json)
 
       if (response.ok) {
         dispatch({type: 'SET_WORKOUTS', payload: json})

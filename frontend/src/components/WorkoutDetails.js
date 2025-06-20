@@ -87,7 +87,7 @@ const WorkoutDetails = ({ workout }) => {
             <h4>{workout.title}</h4>
             <p><strong>Load (kg): </strong>{workout.load}kg</p>
             <p><strong>Number of reps: </strong>{workout.reps}</p>
-            <p>{formatDistanceToNow(workout.createdAt, { addSuffix: true })}</p>
+            <p>{formatDistanceToNow(date, { addSuffix: true })}</p>
           </div>
           <div className="buttons">
             <span className="delete-btn" onClick={handleDelete}>delete</span>

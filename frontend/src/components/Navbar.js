@@ -4,12 +4,13 @@ import { FaBars, FaTimes } from "react-icons/fa"; // ✅ Correct import
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  
 
   return (
     <header>
       <div className="container">
         <Link to="/">
-          <h2 className="main-heading">Workout App</h2>
+          <h2 className="main-heading">Train Log</h2>
         </Link>
 
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>

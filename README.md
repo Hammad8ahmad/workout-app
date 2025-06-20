@@ -1,1 +1,1 @@
-https://workout-app-hammad8ahmads-projects.vercel.app/
+https://workout-app-ten-ashen.vercel.app/

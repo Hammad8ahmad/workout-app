@@ -11,6 +11,8 @@ const WorkoutDetails = ({ workout }) => {
   const [newReps, setNewReps] = useState(workout.reps);
 
        const URL = process.env.REACT_APP_URL;
+    // const URL =  'http://localhost:8080';
+
 
 
   console.log("this is the url",URL)
@@ -94,10 +96,6 @@ const WorkoutDetails = ({ workout }) => {
         </>
       )}
     </div>
-
-
-
-
 
     
   );

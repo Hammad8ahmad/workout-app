@@ -51,7 +51,7 @@ header {
 header .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 10px 5px;
+  padding: 5px 10px;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -243,4 +243,36 @@ div.error {
 
 .delete-btn:hover {
   background-color: #cc0059;
+}
+
+
+.about-page {
+  max-width: max-content;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  line-height: 1.8;
+}
+
+.about-page h1,
+.about-page h2 {
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.about-page p {
+  margin-bottom: 20px;
+  color: var(--dark-text);
+}
+
+.about-page ul {
+  margin-bottom: 30px;
+  padding-left: 20px;
+}
+
+.about-page li {
+  margin-bottom: 10px;
+  color: var(--light-text);
 }

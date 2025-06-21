@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-
+import {format}from 'date-fns'
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
 
@@ -54,6 +54,7 @@ const WorkoutDetails = ({ workout }) => {
   // Convert dueDate string to Date object
   const raw = workout.dueDate;
   const date = new Date(workout.dueDate);
+  const formattedDate = format(date, "yyyy-MM-dd"); 
   
   return (
     <div className="workout-details">
@@ -86,7 +87,11 @@ const WorkoutDetails = ({ workout }) => {
             <h4>{workout.title}</h4>
             <p><strong>Load (kg): </strong>{workout.load}kg</p>
             <p><strong>Number of reps: </strong>{workout.reps}</p>
+            <div className="dates"> 
             <p>{formatDistanceToNow(date, { addSuffix: true })}</p>
+            <p>{formattedDate}</p>
+            </div>
+           
           </div>
           <div className="buttons">
             <span className="delete-btn" onClick={handleDelete}>delete</span>

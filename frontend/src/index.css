@@ -128,7 +128,7 @@ header a:hover {
   background: var(--white);
   border-radius: var(--radius);
   padding: 20px;
-  box-shadow: var(--shadow);
+  /* box-shadow: var(--shadow); */
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -234,6 +234,7 @@ div.error {
 .edit-btn,
 .delete-btn {
   padding: 10px 16px;
+  margin-top: 5px;
   border: none;
   border-radius: var(--radius);
   color: #fff;
@@ -243,6 +244,12 @@ div.error {
   transition: var(--transition);
 }
 
+.dates{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
 .edit-btn {
   background-color: var(--accent);
 }
@@ -369,6 +376,13 @@ body.dark-mode {
 body.dark-mode header {
   background: #1e1e1e;
 }
+body.dark-mode .main-heading{
+  color: rgb(253 224 71);
+
+}
+body.dark-mode .main-heading:hover{
+  color: rgb(255, 237, 128);
+}
 
 body.dark-mode .workout-details {
   background: #1f1f1f;
@@ -376,7 +390,8 @@ body.dark-mode .workout-details {
 }
 
 body.dark-mode .workout-details h4 {
-  color: #90caf9; /* light blue */
+  color: rgb(253 224 71);
+
 }
 
 body.dark-mode .about-page {
@@ -388,7 +403,7 @@ body.dark-mode .links a {
 }
 
 body.dark-mode .links a:hover {
-  color: #90caf9;
+  color: rgb(253 224 71);
 }
 
 body.dark-mode form {
@@ -406,7 +421,9 @@ body.dark-mode input:focus {
 }
 
 body.dark-mode form button {
-  background: #3a86ff;
+  background-color: rgb(253 224 71);
+  color: var(--dark-text);
+
 }
 
 body.dark-mode .edit-btn {
@@ -428,6 +445,12 @@ body.dark-mode .mode-btn{
 body.dark-mode label{
   color: #e0e0e0;
 }
+body.dark-mode .menu-toggle svg{
+  color: #e0e0e0;
+}
+body.dark-mode .links{
+  background-color: var(--dark-text);
+}
 
 .mode-btn{
   all: unset;
@@ -440,4 +463,87 @@ body.dark-mode label{
   padding-bottom: 5px;
   padding-left: 15px;
   padding-right: 15px;
+   
+}
+nav .active {
+  font-weight: bold;
+  color: var(--primary);
+
+}
+body.dark-mode nav .active{
+   font-weight: bold;
+  color: rgb(253 224 71)
+}
+
+
+/* Styles for blinking dot */
+
+.blink-wrapper {
+  position: relative;
+  display: inline-block;
+ 
+}
+
+.blink-me {
+  animation: pulseColor 2s infinite;
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #3b82f6; /* Primary blue color */
+  position: absolute;
+  top: 12px;
+  right: -12px;
+}
+
+
+/* Pulsing Dot Animation */
+@keyframes pulseColor {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    background: #3b82f6; /* Primary blue color */
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+    background: #2563eb; /* Lighter blue shade */
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    background: #3b82f6; /* Primary blue color */
+  }
+}
+
+
+body.dark-mode .blink-me {
+  animation: pulseYellow 2s infinite;
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #fde047; /* Base yellow */
+  position: absolute;
+  top: 12px;
+  right: -12px;
+}
+
+/* Pulsing Yellow Dot Animation */
+@keyframes pulseYellow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    background: #fde047; /* Base yellow */
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.7;
+    background: #fff3a3; /* Lighter yellow */
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    background: #fde047; /* Base yellow again */
+  }
 }

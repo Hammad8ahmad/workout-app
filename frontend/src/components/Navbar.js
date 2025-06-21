@@ -1,11 +1,16 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useThemeContext } from "../hooks/useThemeContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useThemeContext();
+
+  // Track which link should blink
+  const [blinkingLink, setBlinkingLink] = useState("/");
+
+  
 
   return (
     <header>
@@ -22,16 +27,45 @@ const Navbar = () => {
           <button onClick={toggleTheme} className="mode-btn">
             {isDarkMode ? "Light" : "Dark"}
           </button>
-          <Link to="/" onClick={() => setMenuOpen(false)}>
-            <h3>Home</h3>
-          </Link>
-          <Link to="/workouts" onClick={() => setMenuOpen(false)}>
-            <h3>Workouts</h3>
-          </Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)}>
-            <h3>About</h3>
-          </Link>
-          
+
+          <NavLink
+            to="/"
+            onClick={() => {
+              setBlinkingLink("/");
+              setMenuOpen(false);
+            }}
+          >
+            <div className="blink-wrapper">
+              <h3>Home</h3>
+              {blinkingLink === "/" && <span className="blink-me"></span>}
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/workouts"
+            onClick={() => {
+              setBlinkingLink("/workouts");
+              setMenuOpen(false);
+            }}
+          >
+            <div className="blink-wrapper">
+              <h3>Workouts</h3>
+              {blinkingLink === "/workouts" && <span className="blink-me"></span>}
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            onClick={() => {
+              setBlinkingLink("/about");
+              setMenuOpen(false);
+            }}
+          >
+            <div className="blink-wrapper">
+              <h3>About</h3>
+              {blinkingLink === "/about" && <span className="blink-me"></span>}
+            </div>
+          </NavLink>
         </nav>
       </div>
     </header>

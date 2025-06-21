@@ -53,9 +53,8 @@ const WorkoutDetails = ({ workout }) => {
 
   // Convert dueDate string to Date object
   const raw = workout.dueDate;
-  const iso = raw.split('.')[0];
-  const date = new Date(iso);
-
+  const date = new Date(workout.dueDate);
+  
   return (
     <div className="workout-details">
       {isEditing ? (

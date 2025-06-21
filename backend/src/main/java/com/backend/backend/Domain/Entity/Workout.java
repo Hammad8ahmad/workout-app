@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -36,13 +37,13 @@ public class Workout {
     private Integer load;
 
     @Column(nullable = false,updatable = false)
-    private LocalDateTime dueDate;
+    private OffsetDateTime dueDate;
 
     @Column
-    private LocalDateTime createdAt;
+    private OffsetDateTime createdAt;
 
     @Column
-    private LocalDateTime updatedAt;
+    private OffsetDateTime updatedAt;
 
 
 }

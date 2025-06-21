@@ -36,12 +36,16 @@ const handleSubmit = async (e) => {
     try {
       json = JSON.parse(text); // Try to parse JSON
     } catch (err) {
-      console.error('❌ Backend did not return JSON:', text);
+      console.error('Backend did not return JSON:', text);
+      console.log("this is the error cming ",err)
       throw new Error('Invalid JSON response: ' + text);
     }
 
     if (!response.ok) {
-      setError(json.error || 'Something went wrong');
+      setError(json.message || 'Something went wrong');
+      setTimeout(() => {
+        setError(null)
+      }, 2000);
       return;
     }
 
@@ -53,8 +57,12 @@ const handleSubmit = async (e) => {
     dispatch({ type: 'CREATE_WORKOUT', payload: json });
 
   } catch (err) {
-    console.error('❌ Submit error:', err.message);
+    console.error(' Submit error:', err.message);
+     
     setError(err.message);
+    setTimeout(() => setError(null), 2000);
+    return
+  
   }
 };
 
@@ -79,7 +87,7 @@ const handleSubmit = async (e) => {
 
       <label>Number of Reps:</label>
       <input 
-        type="number" 
+        type="number"  
         onChange={(e) => setReps(e.target.value)} 
         value={reps} 
       />

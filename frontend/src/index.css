@@ -29,7 +29,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: var(--dark-text);
-  line-height: 1.6;
+  line-height: 1.5;
   padding-bottom: 50px;
 }
 
@@ -69,7 +69,7 @@ header .links{
 header a {
   color: var(--dark-text);
   text-decoration: none;
-  font-weight: 600;
+  /* font-weight: 600; */
   transition: var(--transition);
 }
 
@@ -92,9 +92,9 @@ header a:hover {
 .main-heading:hover{
   color: black;
 }
-.links{
+/* .links{
   font-size: 14px;
-}
+} */
 
 
 @media (max-width: 768px) {
@@ -303,7 +303,7 @@ div.error {
 }
 @media (min-width: 769px) {
   .links {
-    gap: 50px;
+    gap: 30px;
   }
 }
 
@@ -357,4 +357,87 @@ div.error {
   }
  
   
+}
+
+
+/* Dark mode overrides */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode header {
+  background: #1e1e1e;
+}
+
+body.dark-mode .workout-details {
+  background: #1f1f1f;
+  color: #e0e0e0;
+}
+
+body.dark-mode .workout-details h4 {
+  color: #90caf9; /* light blue */
+}
+
+body.dark-mode .about-page {
+  color: #e0e0e0;
+}
+
+body.dark-mode .links a {
+  color: #e0e0e0;
+}
+
+body.dark-mode .links a:hover {
+  color: #90caf9;
+}
+
+body.dark-mode form {
+  background: #1e1e1e;
+}
+
+body.dark-mode input {
+  background: #2c2c2c;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode input:focus {
+  box-shadow: 0 0 0 2px rgba(144, 202, 249, 0.3);
+}
+
+body.dark-mode form button {
+  background: #3a86ff;
+}
+
+body.dark-mode .edit-btn {
+  background-color: #9c27b0;
+}
+
+body.dark-mode .delete-btn {
+  background-color: #d32f2f;
+}
+
+body.dark-mode .error {
+  background: #3c1a2b;
+  border-color: #ff4081;
+  color: #ff80ab;
+}
+body.dark-mode .mode-btn{
+  border: 1px solid white;
+}
+body.dark-mode label{
+  color: #e0e0e0;
+}
+
+.mode-btn{
+  all: unset;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid black;
+  outline: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
 }

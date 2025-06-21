@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -34,7 +36,8 @@ public class WorkoutServiceImpl implements WorkoutService {
                 || workout.getReps() == null || workout.getLoad() == null){
             throw new IllegalArgumentException("Workout must contain all the fields!");
         };
-        LocalDateTime now = LocalDateTime.now();
+        OffsetDateTime now = OffsetDateTime.now(ZoneId.of("Asia/Karachi"));
+
         return workoutRepository.save(new Workout(
                 null,
                 workout.getTitle(),
@@ -61,10 +64,11 @@ public class WorkoutServiceImpl implements WorkoutService {
         };
         Workout existingWorkout = workoutRepository.findById(Id).orElseThrow(() ->
                 new IllegalArgumentException("Workout not found!"));
+        OffsetDateTime now = OffsetDateTime.now(ZoneId.of("Asia/Karachi"));
         existingWorkout.setTitle(workout.getTitle());
         existingWorkout.setReps(workout.getReps());
         existingWorkout.setLoad(workout.getLoad());
-        existingWorkout.setUpdatedAt(LocalDateTime.now());
+        existingWorkout.setUpdatedAt(now);
         return workoutRepository.save(existingWorkout);
 
     }

@@ -1,6 +1,7 @@
 package com.backend.backend.Domain.Dtos;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public record WorkoutDto(
@@ -8,6 +9,6 @@ public record WorkoutDto(
         String title,
         Integer reps,
         Integer load,
-        LocalDateTime dueDate
+        OffsetDateTime dueDate
 ) {
 }

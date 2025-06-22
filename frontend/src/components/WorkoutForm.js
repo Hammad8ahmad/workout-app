@@ -7,8 +7,8 @@ const WorkoutForm = () => {
   const [title, setTitle] = useState('')
   const [load, setLoad] = useState('')
   const [reps, setReps] = useState('')
-  const [category, setCategory] = useState('Push')
-  const [targetMuscle, setTargetMuscle] = useState('Chest')
+  const [category, setCategory] = useState('PUSH')
+  const [targetMuscle, setTargetMuscle] = useState('CHEST')
 
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -52,8 +52,8 @@ const WorkoutForm = () => {
       setTitle('')
       setLoad('')
       setReps('')
-      setCategory('Push')
-      setTargetMuscle('Chest')
+      setCategory('PUSH')
+      setTargetMuscle('CHEST')
 
       dispatch({ type: 'CREATE_WORKOUT', payload: json })
       setError(null)

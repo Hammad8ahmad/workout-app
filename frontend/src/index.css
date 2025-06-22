@@ -161,7 +161,7 @@ header a:hover {
   .workout-details {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     
   }
 }
@@ -695,30 +695,6 @@ body.dark-mode select {
   border: 1px solid #444;
 }
 
-
-
-.edit-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-@media (min-width: 600px) {
-  .edit-form {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .edit-form input,
-  .edit-form select {
-    flex: 1 1 200px;
-  }
-
-  .edit-form button {
-    flex: 1 1 100px;
-  }
-}
 
 
 .details p strong {

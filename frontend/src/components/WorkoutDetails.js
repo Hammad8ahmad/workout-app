@@ -15,6 +15,8 @@ const WorkoutDetails = ({ workout }) => {
 
   // const URL = "http://localhost:8080";
       const URL = process.env.REACT_APP_URL;
+
+
   const handleDelete = async () => {
     const response = await fetch(`${URL}/workouts/${workout.Id}`, {
       method: "DELETE",
@@ -57,20 +59,26 @@ const WorkoutDetails = ({ workout }) => {
     <div className="workout-details">
       {isEditing ? (
         <form onSubmit={handleUpdate} className="edit-form">
+          {/* <label>Title:</label> */}
           <input
             type="text"
+            placeholder="title"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             required
           />
+          {/* <label>Load:</label> */}
           <input
             type="number"
+            placeholder="load"
             value={newLoad}
             onChange={(e) => setNewLoad(e.target.value)}
             required
           />
+          {/* <label>Reps:</label> */}
           <input
             type="number"
+            placeholder="reps"
             value={newReps}
             onChange={(e) => setNewReps(e.target.value)}
             required
@@ -82,12 +90,10 @@ const WorkoutDetails = ({ workout }) => {
             onChange={(e) => setNewCategory(e.target.value)}
             required
           >
-            <option value="">--Select--</option>
-            <option value="Push">Push</option>
-            <option value="Pull">Pull</option>
-            <option value="Legs">Legs</option>
-            <option value="Core">Core</option>
-            <option value="FullBody">FullBody</option>
+            <option value="PUSH">Push</option>
+            <option value="PULL">Pull</option>
+            <option value="LEGS">Legs</option>
+            <option value="CORE">Core</option>
           </select>
 
           <label>Target Muscle:</label>
@@ -96,13 +102,12 @@ const WorkoutDetails = ({ workout }) => {
             onChange={(e) => setNewTargetMuscle(e.target.value)}
             required
           >
-            <option value="">--Select--</option>
-            <option value="Chest">Chest</option>
-            <option value="Back">Back</option>
-            <option value="Shoulders">Shoulders</option>
-            <option value="Arms">Arms</option>
-            <option value="Abs">Abs</option>
-            <option value="Legs">Legs</option>
+            <option value="CHEST">Chest</option>
+            <option value="BACK">Back</option>
+            <option value="SHOULDERS">Shoulders</option>
+            <option value="ARMS">Arms</option>
+            <option value="ABS">Abs</option>
+            <option value="LEGS">Legs</option>
           </select>
 
           <button type="submit" className="edit-btn">

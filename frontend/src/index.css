@@ -33,6 +33,22 @@ body {
   padding-bottom: 50px;
 }
 
+body,
+header,
+form,
+input,
+.workout-details,
+.total-workouts-container,
+.total-workouts-heading,
+.total-workouts-count,
+.details,
+.links,
+.mode-btn {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+
+
 @media (max-width: 500px) {
   body {
     font-size: 15px;
@@ -51,7 +67,7 @@ header {
 header .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 10px 40px;
+  padding: 10px 50px;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -86,11 +102,11 @@ header a:hover {
 
 .main-heading{
   font-size: 30px;
-  color: var(--primary-dark);
+  color: var(--primary);
 
 }
 .main-heading:hover{
-  color: black;
+  color: var(--primary-dark);
 }
 /* .links{
   font-size: 14px;
@@ -106,8 +122,8 @@ header a:hover {
 /* Homepage Layout */
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 60px;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
 }
 
 @media (max-width: 900px) {
@@ -146,9 +162,15 @@ header a:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    
   }
 }
-
+.workouts{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  gap: 10px;
+}
 .workout-details h4 {
   color: var(--primary);
   font-size: 1.4rem;
@@ -229,6 +251,34 @@ div.error {
   margin: 20px 0;
   font-size: 0.95rem;
 }
+/* Loading spinner */
+
+button.loading {
+  position: relative;
+  color: transparent !important;
+}
+
+button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-top-color: var(--primary-dark);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
 
 /* Button Styles */
 .edit-btn,
@@ -266,38 +316,6 @@ div.error {
   background-color: #cc0059;
 }
 
-
-.about-page {
-  max-width: max-content;
-  margin: 0 auto;
-  padding: 40px 20px;
-  line-height: 1.8;
-  color: var(--primary-dark);
-;
-}
-
-.about-page h1,
-.about-page h2 {
-  color: var(--primary-dark);
-  margin-bottom: 15px;
-}
-
-.about-page p {
-  margin-bottom: 20px;
-  color: var(--dark-text);
-}
-
-.about-page ul {
-  margin-bottom: 30px;
-  padding-left: 20px;
-}
-
-.about-page li {
-  margin-bottom: 10px;
-  color: var(--light-text);
-}
-
-
 .menu-toggle {
   display: none;
   background: none;
@@ -326,6 +344,7 @@ div.error {
     display: block;
     z-index: 200;
   }
+  
 
   .links {
     position: absolute;
@@ -440,7 +459,7 @@ body.dark-mode .error {
   color: #ff80ab;
 }
 body.dark-mode .mode-btn{
-  border: 1px solid white;
+  border: 1px solid  rgb(253 224 71);
 }
 body.dark-mode label{
   color: #e0e0e0;
@@ -448,16 +467,14 @@ body.dark-mode label{
 body.dark-mode .menu-toggle svg{
   color: #e0e0e0;
 }
-body.dark-mode .links{
-  background-color: var(--dark-text);
-}
+
 
 .mode-btn{
   all: unset;
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
-  border: 1px solid black;
+  border: 1px solid #3a86ff;
   outline: none;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -547,3 +564,183 @@ body.dark-mode .blink-me {
     background: #fde047; /* Base yellow again */
   }
 }
+
+@media (max-width: 768px) {
+  .mode-btn{
+    font-size: 12px;
+  }
+  .blink-me{
+    top: 7px;
+  }
+  body.dark-mode .blink-me{
+    top: 7px;
+  }
+}
+
+
+.date-label {
+  font-size: 0.9rem;
+  color: var(--light-text);
+  font-style: italic;
+}
+
+.details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.total-workouts-container {
+  padding: 1rem; /* p-4 */
+  margin-bottom: 1.5rem; /* mb-6 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #e5e7eb; /* border-gray-200 */
+  background-color: #ffffff; /* bg-white */
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.total-workouts-heading {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.total-workouts-count {
+  margin-left: 0.5rem; /* ml-2 */
+  color: #60a5fa; /* text-blue-400 */
+}
+.no-workouts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* or 100vh if you want full page height */
+  font-size: 2.2rem;
+  color: var(--dark-text);
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+
+body.dark-mode .no-workouts{
+  color:#e5e5e5;
+}
+
+
+/* Dark mode overrides */
+body.dark-mode .total-workouts-container {
+  background-color: #2a2a2a; /* dark:bg-neutral-800 */
+  border-color: #3f3f3f;     /* dark:border-neutral-700 */
+}
+
+body.dark-mode .total-workouts-heading {
+  color: #e5e5e5; /* dark:text-gray-200 */
+}
+
+body.dark-mode .total-workouts-count {
+  color: #fde047; /* dark:text-yellow-400 */
+}
+
+
+.total-workouts {
+  display: grid;
+  grid-template-columns: 1fr; /* Default: 1 column */
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  /* padding: 1rem; */
+}
+
+/* On medium+ screens: 2 columns */
+@media (min-width: 768px) {
+  .total-workouts {
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  
+}
+
+/* Make workout cards stretch full width of grid cell */
+.workout-details {
+  width: 100%;
+  margin: 0 auto;
+  
+
+}
+
+select {
+  padding: 12px 14px;
+  margin: 8px 0 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background: #fff;
+  color: var(--dark-text);
+  transition: background-color 0.3s ease, color 0.3s ease, var(--transition);
+}
+
+select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+body.dark-mode select {
+  background: #2c2c2c;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 600px) {
+  .edit-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .edit-form input,
+  .edit-form select {
+    flex: 1 1 200px;
+  }
+
+  .edit-form button {
+    flex: 1 1 100px;
+  }
+}
+
+
+.details p strong {
+  color: var(--dark-text);
+  display: inline-block;
+  width: 140px;
+}
+
+body.dark-mode .details p strong {
+  color: #e0e0e0;
+}
+
+
+
+
+input,
+select {
+  background-color: #f9f9f9;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+  background-color: #1e1e1e;
+}
+

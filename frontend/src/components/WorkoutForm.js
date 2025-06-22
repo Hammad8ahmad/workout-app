@@ -7,92 +7,115 @@ const WorkoutForm = () => {
   const [title, setTitle] = useState('')
   const [load, setLoad] = useState('')
   const [reps, setReps] = useState('')
+  const [category, setCategory] = useState('Push')
+  const [targetMuscle, setTargetMuscle] = useState('Chest')
+
   const [error, setError] = useState(null)
-
-   const URL = process.env.REACT_APP_URL;
-  // const URL =  'http://localhost:8080';
-
-
-
-
+  const [loading, setLoading] = useState(false)
   
-const handleSubmit = async (e) => {
-  e.preventDefault();
 
-  const workout = { title, load, reps };
+    // const URL = "http://localhost:8080";
+      const URL = process.env.REACT_APP_URL;
 
-  try {
-    const response = await fetch(`${URL}/workouts`, {
-      method: 'POST',
-      body: JSON.stringify(workout),
-      headers: {
-        'Content-Type': 'application/json'
-      }// only if needed for cookies
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
 
-    const text = await response.text(); // Read response as text
+    const workout = { title, load, reps, category, targetMuscle }
 
-    let json;
     try {
-      json = JSON.parse(text); // Try to parse JSON
+      const response = await fetch(`${URL}/workouts`, {
+        method: 'POST',
+        body: JSON.stringify(workout),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+
+      const text = await response.text()
+      let json
+
+      try {
+        json = JSON.parse(text)
+      } catch (err) {
+        console.error('Backend did not return JSON:', text)
+        throw new Error('Invalid JSON response: ' + text)
+      }
+
+      if (!response.ok) {
+        setError(json.message || 'Something went wrong')
+        setTimeout(() => setError(null), 2000)
+        return
+      }
+
+      // Success
+      setTitle('')
+      setLoad('')
+      setReps('')
+      setCategory('Push')
+      setTargetMuscle('Chest')
+
+      dispatch({ type: 'CREATE_WORKOUT', payload: json })
+      setError(null)
     } catch (err) {
-      console.error('Backend did not return JSON:', text);
-      console.log("this is the error cming ",err)
-      throw new Error('Invalid JSON response: ' + text);
+      console.error('Submit error:', err.message)
+      setError(err.message)
+      setTimeout(() => setError(null), 2000)
+    } finally {
+      setLoading(false)
     }
-
-    if (!response.ok) {
-      setError(json.message || 'Something went wrong');
-      setTimeout(() => {
-        setError(null)
-      }, 2000);
-      return;
-    }
-
-    // Success
-    setError(null);
-    setTitle('');
-    setLoad('');
-    setReps('');
-    dispatch({ type: 'CREATE_WORKOUT', payload: json });
-
-  } catch (err) {
-    console.error(' Submit error:', err.message);
-     
-    setError(err.message);
-    setTimeout(() => setError(null), 2000);
-    return
-  
   }
-};
-
 
   return (
-    <form className="create" onSubmit={handleSubmit}> 
+    <form className="create" onSubmit={handleSubmit}>
       <h3>Add a New Workout</h3>
 
-      <label>Excersize Title:</label>
-      <input 
-        type="text" 
-        onChange={(e) => setTitle(e.target.value)} 
+      <label>Exercise Title:</label>
+      <input
+        type="text"
+        onChange={(e) => setTitle(e.target.value)}
         value={title}
+        required
       />
 
       <label>Load (in kg):</label>
-      <input 
-        type="number" 
-        onChange={(e) => setLoad(e.target.value)} 
+      <input
+        type="number"
+        onChange={(e) => setLoad(e.target.value)}
         value={load}
+        required
       />
 
       <label>Number of Reps:</label>
-      <input 
-        type="number"  
-        onChange={(e) => setReps(e.target.value)} 
-        value={reps} 
+      <input
+        type="number"
+        onChange={(e) => setReps(e.target.value)}
+        value={reps}
+        required
       />
+     <label>Category:</label>
+     <select value={category} onChange={(e) => setCategory(e.target.value)} required>
+        <option value="PUSH">Push</option>
+        <option value="PULL">Pull</option>
+        <option value="LEGS">Legs</option>
+        <option value="CORE">Core</option>
+     </select>
 
-      <button>Add Workout</button>
+     <label>Target Muscle:</label>
+     <select value={targetMuscle} onChange={(e) => setTargetMuscle(e.target.value)} required>
+        <option value="CHEST">Chest</option>
+        <option value="BACK">Back</option>
+        <option value="SHOULDERS">Shoulders</option>
+        <option value="ARMS">Arms</option>
+        <option value="ABS">Abs</option>
+        <option value="LEGS">Legs</option>
+      </select>
+
+
+      <button className={loading ? 'loading' : ''} disabled={loading}>
+        {loading ? 'Adding...' : 'Add Workout'}
+      </button>
+
       {error && <div className="error">{error}</div>}
     </form>
   )

@@ -45,5 +45,11 @@ public class Workout {
     @Column
     private OffsetDateTime updatedAt;
 
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+    @Enumerated(EnumType.STRING)
+    private TargetMuscle targetMuscle;
+
 
 }

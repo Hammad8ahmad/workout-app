@@ -54,18 +54,7 @@ const Navbar = () => {
             </div>
           </NavLink>
 
-          <NavLink
-            to="/about"
-            onClick={() => {
-              setBlinkingLink("/about");
-              setMenuOpen(false);
-            }}
-          >
-            <div className="blink-wrapper">
-              <h3>About</h3>
-              {blinkingLink === "/about" && <span className="blink-me"></span>}
-            </div>
-          </NavLink>
+        
         </nav>
       </div>
     </header>

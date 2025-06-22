@@ -17,7 +17,7 @@ export const ThemeContextProvider = ({ children }) => {
   const toggleActiveLink = () => setIsActive((prev)=> !prev)
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme,toggleActiveLink }}>
       {children}
     </ThemeContext.Provider>
   );

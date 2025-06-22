@@ -45,7 +45,9 @@ public class WorkoutServiceImpl implements WorkoutService {
                 workout.getLoad(),
                 now,
                 now,
-                now
+                now,
+                workout.getCategory(),
+                workout.getTargetMuscle()
         ));
     }
 
@@ -69,6 +71,8 @@ public class WorkoutServiceImpl implements WorkoutService {
         existingWorkout.setReps(workout.getReps());
         existingWorkout.setLoad(workout.getLoad());
         existingWorkout.setUpdatedAt(now);
+        existingWorkout.setCategory(workout.getCategory());
+        existingWorkout.setTargetMuscle(workout.getTargetMuscle());
         return workoutRepository.save(existingWorkout);
 
     }

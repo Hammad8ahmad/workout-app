@@ -25,7 +25,9 @@ public class WorkoutMapperImpl implements WorkoutMapper {
                 workoutDto.load(),
                 dueDate,
                 null,
-                null
+                null,
+                workoutDto.category(),
+                workoutDto.targetMuscle()
         );
     }
 
@@ -38,7 +40,9 @@ public class WorkoutMapperImpl implements WorkoutMapper {
                 workout.getLoad(),
                 workout.getDueDate() != null
                         ? workout.getDueDate().withOffsetSameInstant(ZoneId.of("Asia/Karachi").getRules().getOffset(workout.getDueDate().toInstant()))
-                        : null
+                        : null,
+                workout.getCategory(),
+                workout.getTargetMuscle()
         );
     }
 }

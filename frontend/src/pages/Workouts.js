@@ -28,15 +28,24 @@ const Workouts = () => {
    
 
 return <>
+    
+    <div className="totalworkouts">
+    <div className="total-workouts-container">
+      <h2 className="total-workouts-heading">
+      Total Workouts:
+       <span className="total-workouts-count">{workouts.length}</span>
+      </h2>
+     </div>
+    </div>
 
-    <div className="workouts-page">
-      <div className="workouts">
-        {workouts && workouts.map(workout => (
+    <div className="total-workouts-page">
+      <div className="total-workouts">
+        {workouts.length? workouts.map(workout => (
           <WorkoutDetails workout={workout} key={workout._id} />
-        ))}
+        )) : <div className="no-workouts"> No workouts yet.</div>}
       </div>
     </div>
-  
+    
 
 </>
 }

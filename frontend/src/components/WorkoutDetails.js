@@ -18,7 +18,8 @@ const WorkoutDetails = ({ workout }) => {
 
 
   const handleDelete = async () => {
-    const response = await fetch(`${URL}/workouts/${workout.Id}`, {
+    console.log(workout.id)
+    const response = await fetch(`${URL}/workouts/${workout.id}`, {
       method: "DELETE",
     });
 
@@ -39,7 +40,7 @@ const WorkoutDetails = ({ workout }) => {
       targetMuscle: newTargetMuscle,
     };
 
-    const response = await fetch(`${URL}/workouts/${workout.Id}`, {
+    const response = await fetch(`${URL}/workouts/${workout.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedWorkout),

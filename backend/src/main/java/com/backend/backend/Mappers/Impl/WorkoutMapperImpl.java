@@ -19,7 +19,7 @@ public class WorkoutMapperImpl implements WorkoutMapper {
                 : OffsetDateTime.now(ZoneId.of("Asia/Karachi"));
 
         return new Workout(
-                workoutDto.Id(),
+                workoutDto.id(),
                 workoutDto.title(),
                 workoutDto.reps(),
                 workoutDto.load(),

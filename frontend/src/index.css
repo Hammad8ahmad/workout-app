@@ -122,8 +122,8 @@ header a:hover {
 /* Homepage Layout */
 .home {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  /* grid-template-rows: 1fr 1fr; */
+  gap: 20px;
 }
 
 @media (max-width: 900px) {
@@ -196,7 +196,7 @@ form {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
   margin: 0 auto;
 }
 
@@ -361,6 +361,11 @@ button.loading::after {
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 150;
+  }
+  body.dark-mode .links{
+   
+  background-color:#1e1e1e;
+
   }
 
   .links.open {
@@ -718,5 +723,17 @@ select {
 body.dark-mode input,
 body.dark-mode select {
   background-color: #1e1e1e;
+}
+
+
+
+.inline-inputs {
+  display: flex;
+  gap: 15px;
+}
+
+.inline-inputs input {
+  flex: 1;
+  margin: 8px 0 20px;
 }
 

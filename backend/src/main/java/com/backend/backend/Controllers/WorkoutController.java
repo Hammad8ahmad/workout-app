@@ -3,6 +3,7 @@ package com.backend.backend.Controllers;
 import com.backend.backend.Domain.Dtos.WorkoutDto;
 import com.backend.backend.Domain.Entity.Workout;
 import com.backend.backend.Mappers.WorkoutMapper;
+import com.backend.backend.Repository.WorkoutRepository;
 import com.backend.backend.Services.WorkoutService;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,18 +49,21 @@ public class WorkoutController {
 //   Delete a workout
 
     @DeleteMapping(path = "/{workout_id}")
-    public void  deleteWorkout(@PathVariable("workout_id") UUID Id){
-        workoutService.DeleteWorkout(Id);
+    public void  deleteWorkout(@PathVariable("workout_id") UUID id){
+        workoutService.DeleteWorkout(id);
     }
 //   Update a workout
 
     @PutMapping(path = "/{workout_id}")
     public WorkoutDto updatedWorkout(
-            @PathVariable("workout_id") UUID Id,
+            @PathVariable("workout_id") UUID id,
             @RequestBody WorkoutDto workoutDto
     ){
-       Workout updatedWorkout =  workoutService.UpdateWorkout(Id,workoutMapper
+       Workout updatedWorkout =  workoutService.UpdateWorkout(id,workoutMapper
                .fromDto(workoutDto));
        return workoutMapper.toDto(updatedWorkout);
     }
+
+
 }
+

@@ -33,6 +33,7 @@ const WorkoutForm = () => {
       })
 
       const text = await response.text()
+      console.log("this is the text",text)
       let json
 
       try {
@@ -47,6 +48,7 @@ const WorkoutForm = () => {
         setTimeout(() => setError(null), 2000)
         return
       }
+      console.log(workout)
 
       // Success
       setTitle('')
@@ -73,43 +75,52 @@ const WorkoutForm = () => {
       <label>Exercise Title:</label>
       <input
         type="text"
+        placeholder="Title"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
         required
       />
 
-      <label>Load (in kg):</label>
-      <input
-        type="number"
-        onChange={(e) => setLoad(e.target.value)}
-        value={load}
-        required
-      />
+      <label>Load (in kg) & Reps:</label>
+      <div className="inline-inputs">
+       <input
+         type="number"
+         placeholder="Load"
+         onChange={(e) => setLoad(e.target.value)}
+         value={load}
+         required
+       />
 
-      <label>Number of Reps:</label>
-      <input
-        type="number"
-        onChange={(e) => setReps(e.target.value)}
-        value={reps}
-        required
-      />
-     <label>Category:</label>
+       <input
+         type="number"
+         placeholder="Reps"
+         onChange={(e) => setReps(e.target.value)}
+         value={reps}
+         required
+       />
+      </div>
+
+
+    
+   <label>Category & Target Muscle:</label>
+    <div className="inline-inputs">
      <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-        <option value="PUSH">Push</option>
-        <option value="PULL">Pull</option>
-        <option value="LEGS">Legs</option>
-        <option value="CORE">Core</option>
+       <option value="PUSH">Push</option>
+       <option value="PULL">Pull</option>
+       <option value="LEGS">Legs</option>
+       <option value="CORE">Core</option>
      </select>
 
-     <label>Target Muscle:</label>
      <select value={targetMuscle} onChange={(e) => setTargetMuscle(e.target.value)} required>
-        <option value="CHEST">Chest</option>
-        <option value="BACK">Back</option>
-        <option value="SHOULDERS">Shoulders</option>
-        <option value="ARMS">Arms</option>
-        <option value="ABS">Abs</option>
-        <option value="LEGS">Legs</option>
-      </select>
+       <option value="CHEST">Chest</option>
+       <option value="BACK">Back</option>
+       <option value="SHOULDERS">Shoulders</option>
+       <option value="ARMS">Arms</option>
+       <option value="ABS">Abs</option>
+       <option value="LEGS">Legs</option>
+     </select>
+    </div>
+
 
 
       <button className={loading ? 'loading' : ''} disabled={loading}>

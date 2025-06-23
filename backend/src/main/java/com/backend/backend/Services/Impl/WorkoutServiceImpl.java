@@ -52,19 +52,19 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
-    public void DeleteWorkout(UUID Id) {
-        workoutRepository.deleteById(Id);
+    public void DeleteWorkout(UUID id) {
+        workoutRepository.deleteById(id);
     }
 
     @Override
-    public Workout UpdateWorkout(UUID Id, Workout workout) {
+    public Workout UpdateWorkout(UUID id, Workout workout) {
         if(null == workout.getId()){
             throw  new IllegalArgumentException("Workout must contain an id!");
         }
-        if(!Objects.equals(workout.getId(),Id)){
+        if(!Objects.equals(workout.getId(),id)){
             throw  new IllegalArgumentException("attemptng to change workout id this is not permitted!");
         };
-        Workout existingWorkout = workoutRepository.findById(Id).orElseThrow(() ->
+        Workout existingWorkout = workoutRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("Workout not found!"));
         OffsetDateTime now = OffsetDateTime.now(ZoneId.of("Asia/Karachi"));
         existingWorkout.setTitle(workout.getTitle());

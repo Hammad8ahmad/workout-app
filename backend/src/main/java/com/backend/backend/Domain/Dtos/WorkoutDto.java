@@ -8,7 +8,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 public record WorkoutDto(
-        UUID Id,
+        UUID id,
         String title,
         Integer reps,
         Integer load,

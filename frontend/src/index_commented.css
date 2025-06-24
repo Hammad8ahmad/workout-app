@@ -565,7 +565,7 @@ body.dark-mode nav .active{
 /* ========================
    🔴 Blinking Dot
 ======================== */
-/* /\* Styles for blinking dot \*/ */
+/* /\* Styles for blinking dot \*/ 
 
 .blink-wrapper {
   position: relative;
@@ -714,7 +714,6 @@ body.dark-mode .no-workouts{
 /* ========================
    🌙 Dark Mode Overrides
 ======================== */
-/* /\* Dark mode overrides \*/ 
 
 body.dark-mode .total-workouts-container {
   background-color: #2a2a2a; /* dark:bg-neutral-800 */
@@ -822,7 +821,6 @@ body.dark-mode select {
 /* ========================
    🧯 Prevent Horizontal Scroll
 ======================== */
-/* /\* Disable horizontal scrolling on small screens \*/ 
 
 html, body {
   max-width: 100%;

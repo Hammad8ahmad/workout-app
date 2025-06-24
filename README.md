@@ -6,17 +6,12 @@ Track, view, and manage your workouts with ease. Built with a modern **React fro
 
 ##  Live Demo
 
-[https://my-train-log.vercel.app/]
-
+[Demo](https://my-train-log.vercel.app/)
 
 
 ##  Screenshots
 
-| Workout List | Add Workout |
-|--------------|-------------|
-| ![Workout](./updated-workout.png) | *(Optional: Add another screenshot)* |
-
----
+[workout](https://github.com/user-attachments/assets/f4e8d2ad-e05c-4bef-904a-0d574d6a7ddd)
 
 ## Tech Stack
 

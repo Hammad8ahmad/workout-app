@@ -47,6 +47,16 @@ input,
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
+
+.home,
+.pages {
+  overflow-x: hidden;
+}
+
 
 
 @media (max-width: 500px) {
@@ -741,3 +751,9 @@ body.dark-mode select {
   margin: 8px 0 20px;
 }
 
+
+/* Disable horizontal scrolling on small screens */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}

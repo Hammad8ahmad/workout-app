@@ -1,12 +1,12 @@
 
 /* ========================
-   🌐 Google Fonts
+    Google Fonts
 ======================== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
 
 
 /* ========================
-   📦 Global Box Sizing Reset
+    Global Box Sizing Reset
 ======================== */
 * {
   box-sizing: border-box;
@@ -16,7 +16,7 @@
 
 
 /* ========================
-   🎨 CSS Variables (Theme)
+    CSS Variables (Theme)
 ======================== */
 :root {
   --primary: #3a86ff;
@@ -34,7 +34,7 @@
 
 
 /* ========================
-   🧍 Body Base Styles
+    Body Base Styles
 ======================== */
 body {
   background: var(--light-bg);
@@ -85,7 +85,7 @@ html, body {
 
 
 /* ========================
-   🧭 Header Section
+   Header Section
 ======================== */
 header {
   background: var(--white);
@@ -126,7 +126,7 @@ header a:hover {
 
 
 /* ========================
-   📄 Pages Layout Wrapper
+    Pages Layout Wrapper
 ======================== */
 .pages {
   max-width: 1400px;
@@ -155,7 +155,7 @@ header a:hover {
 
 
 /* ========================
-   🏠 Homepage Layout
+    Homepage Layout
 ======================== */
 .home {
   display: grid;
@@ -178,7 +178,7 @@ header a:hover {
 
 
 /* ========================
-   💪 Workout Card Styles
+    Workout Card Styles
 ======================== */
 .workout-details {
   background: var(--white);
@@ -223,7 +223,7 @@ header a:hover {
 
 
 /* ========================
-   🔘 Buttons Container
+    Buttons Container
 ======================== */
 .buttons {
   display: flex;
@@ -234,7 +234,7 @@ header a:hover {
 
 
 /* ========================
-   📝 Form Styles
+    Form Styles
 ======================== */
 form {
   background: var(--white);
@@ -289,7 +289,7 @@ form button:hover {
 
 
 /* ========================
-   ⚠️ Error Message Styles
+    Error Message Styles
 ======================== */
 div.error {
   padding: 12px;
@@ -302,7 +302,7 @@ div.error {
 }
 
 /* ========================
-   ⏳ Loading Button Spinner
+    Loading Button Spinner
 ======================== */
 
 button.loading {
@@ -334,7 +334,7 @@ button.loading::after {
 
 
 /* ========================
-   🟠 Button Styles
+    Button Styles
 ======================== */
 .edit-btn,
 .delete-btn {
@@ -452,7 +452,7 @@ button.loading::after {
 
 
 /* ========================
-   🌙 Dark Mode Overrides
+    Dark Mode Overrides
 ======================== */
 /* /\* Dark mode overrides \*/ 
 body.dark-mode {
@@ -563,7 +563,7 @@ body.dark-mode nav .active{
 
 
 /* ========================
-   🔴 Blinking Dot
+    Blinking Dot
 ======================== */
 /* /\* Styles for blinking dot \*/ 
 
@@ -588,7 +588,7 @@ body.dark-mode nav .active{
 
 
 /* ========================
-   🎯 Blinking Animation
+    Blinking Animation
 ======================== */
 /* /\* Pulsing Dot Animation \*/ 
 @keyframes pulseColor {
@@ -624,7 +624,7 @@ body.dark-mode .blink-me {
 
 
 /* ========================
-   🌕 Dark Mode Dot Animation
+    Dark Mode Dot Animation
 ======================== */
 /* /\* Pulsing Yellow Dot Animation \*/ 
 @keyframes pulseYellow {
@@ -712,7 +712,7 @@ body.dark-mode .no-workouts{
 
 
 /* ========================
-   🌙 Dark Mode Overrides
+    Dark Mode Overrides
 ======================== */
 
 body.dark-mode .total-workouts-container {
@@ -819,7 +819,7 @@ body.dark-mode select {
 
 
 /* ========================
-   🧯 Prevent Horizontal Scroll
+    Prevent Horizontal Scroll
 ======================== */
 
 html, body {

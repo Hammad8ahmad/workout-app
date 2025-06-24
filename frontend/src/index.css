@@ -1,20 +1,23 @@
-/* -------------------------------
-   🎨 Google Fonts
---------------------------------- */
+
+/* ========================
+   🌐 Google Fonts
+======================== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
 
-/* -------------------------------
-   🧱 Box-sizing Reset & Defaults
---------------------------------- */
+
+/* ========================
+   📦 Global Box Sizing Reset
+======================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* -------------------------------
-   🌈 CSS Variables
---------------------------------- */
+
+/* ========================
+   🎨 CSS Variables (Theme)
+======================== */
 :root {
   --primary: #3a86ff;
   --primary-dark: #265ecf;
@@ -29,9 +32,10 @@
   --transition: all 0.3s ease;
 }
 
-/* -------------------------------
-   🌍 Global Styles
---------------------------------- */
+
+/* ========================
+   🧍 Body Base Styles
+======================== */
 body {
   background: var(--light-bg);
   font-family: "Poppins", sans-serif;
@@ -40,6 +44,12 @@ body {
   line-height: 1.5;
   padding-bottom: 50px;
 }
+/* Disable horizontal scrolling on small screens */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 
 body,
 header,
@@ -56,14 +66,16 @@ input,
 }
 
 html, body {
-  max-width: 100%;
   overflow-x: hidden;
 }
+
 
 .home,
 .pages {
   overflow-x: hidden;
 }
+
+
 
 @media (max-width: 500px) {
   body {
@@ -71,9 +83,10 @@ html, body {
   }
 }
 
-/* -------------------------------
-   🧭 Header Styles
---------------------------------- */
+
+/* ========================
+   🧭 Header Section
+======================== */
 header {
   background: var(--white);
   box-shadow: var(--shadow);
@@ -93,16 +106,17 @@ header .container {
   flex-wrap: wrap;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-header .links {
+header .links{
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 header a {
   color: var(--dark-text);
   text-decoration: none;
+  /* font-weight: 600; */
   transition: var(--transition);
 }
 
@@ -110,77 +124,28 @@ header a:hover {
   color: var(--primary);
 }
 
-@media (max-width: 768px) {
-  header .container {
-    padding: 10px 20px;
-  }
 
-  .main-heading {
-    font-size: 24px;
-  }
-
-  .menu-toggle {
-    display: block;
-    z-index: 200;
-  }
-
-  .links {
-    display: none;
-    position: absolute;
-    font-size: 12px;
-    top: 52px;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    width: 150px;
-    padding: 10px;
-    box-shadow: var(--shadow);
-    z-index: 150;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease;
-  }
-
-  .links.open {
-    display: flex;
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  body.dark-mode .links {
-    background-color: #1e1e1e;
-  }
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-toggle svg {
-  width: 24px;
-  height: 24px;
-}
-
-@media (max-width: 500px) {
-  .menu-toggle svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* -------------------------------
-   🖼️ Pages Layout
---------------------------------- */
+/* ========================
+   📄 Pages Layout Wrapper
+======================== */
 .pages {
   max-width: 1400px;
   padding: 30px 20px;
   margin: 0 auto;
 }
+
+.main-heading{
+  font-size: 30px;
+  color: var(--primary);
+
+}
+.main-heading:hover{
+  color: var(--primary-dark);
+}
+/* .links{
+  font-size: 14px;
+} */
+
 
 @media (max-width: 768px) {
   .pages {
@@ -188,20 +153,13 @@ header a:hover {
   }
 }
 
-.main-heading {
-  font-size: 30px;
-  color: var(--primary);
-}
 
-.main-heading:hover {
-  color: var(--primary-dark);
-}
-
-/* -------------------------------
-   🏠 Home Page
---------------------------------- */
+/* ========================
+   🏠 Homepage Layout
+======================== */
 .home {
   display: grid;
+  /* grid-template-rows: 1fr 1fr; */
   gap: 20px;
 }
 
@@ -212,40 +170,47 @@ header a:hover {
     gap: 25px;
   }
 
+  /* Put form on top, workouts below on small screens */
   .home > form {
     order: -1;
   }
 }
 
-/* -------------------------------
-   🏋️ Workout Card
---------------------------------- */
+
+/* ========================
+   💪 Workout Card Styles
+======================== */
 .workout-details {
   background: var(--white);
   border-radius: var(--radius);
   padding: 20px;
+  /* box-shadow: var(--shadow); */
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin: 20px auto;
   transition: var(--transition);
-  width: 100%;
 }
+/* 
+.workout-details:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+} */
 
 @media (min-width: 600px) {
   .workout-details {
     flex-direction: row;
     justify-content: space-between;
     align-items: end;
+    
   }
 }
-
-.workouts {
+.workouts{
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   gap: 10px;
 }
-
 .workout-details h4 {
   color: var(--primary);
   font-size: 1.4rem;
@@ -256,9 +221,21 @@ header a:hover {
   color: var(--light-text);
 }
 
-/* -------------------------------
+
+/* ========================
+   🔘 Buttons Container
+======================== */
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* ========================
    📝 Form Styles
---------------------------------- */
+======================== */
 form {
   background: var(--white);
   padding: 25px;
@@ -276,21 +253,17 @@ label {
   display: block;
 }
 
-input,
-select {
+input {
   padding: 12px 14px;
   margin: 8px 0 20px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: var(--radius);
   font-size: 1rem;
-  background-color: #f9f9f9;
-  color: var(--dark-text);
   transition: var(--transition);
 }
 
-input:focus,
-select:focus {
+input:focus {
   border-color: var(--primary);
   outline: none;
   box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
@@ -314,9 +287,10 @@ form button:hover {
   background: var(--primary-dark);
 }
 
-/* -------------------------------
-   🚨 Error Styles
---------------------------------- */
+
+/* ========================
+   ⚠️ Error Message Styles
+======================== */
 div.error {
   padding: 12px;
   background: #ffe8f0;
@@ -327,9 +301,10 @@ div.error {
   font-size: 0.95rem;
 }
 
-/* -------------------------------
-   ⏳ Loading Spinner
---------------------------------- */
+/* ========================
+   ⏳ Loading Button Spinner
+======================== */
+
 button.loading {
   position: relative;
   color: transparent !important;
@@ -355,9 +330,12 @@ button.loading::after {
   }
 }
 
-/* -------------------------------
-   📦 Buttons
---------------------------------- */
+
+
+
+/* ========================
+   🟠 Button Styles
+======================== */
 .edit-btn,
 .delete-btn {
   padding: 10px 16px;
@@ -371,6 +349,12 @@ button.loading::after {
   transition: var(--transition);
 }
 
+.dates{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
 .edit-btn {
   background-color: var(--accent);
 }
@@ -387,14 +371,90 @@ button.loading::after {
   background-color: #cc0059;
 }
 
-/* -------------------------------
-   🌙 Dark Mode
---------------------------------- */
-/* [This section continues next due to message size limits...] */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
-/* -------------------------------
-   🌙 Dark Mode Styles
---------------------------------- */
+.links {
+  display: flex;
+}
+@media (min-width: 769px) {
+  .links {
+    gap: 30px;
+  }
+}
+
+
+@media (max-width: 768px) {
+ header .container{
+    padding: 10px 20px;
+  }
+  .main-heading{
+    font-size: 24px;
+  }
+  .menu-toggle {
+    display: block;
+    z-index: 200;
+  }
+  
+.links {
+  display: none;
+  position: absolute;
+  font-size: 12px;
+  top: 52px;
+  right: 0;
+  background: white;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 150px;
+  padding: 10px;
+  box-shadow: var(--shadow);
+  z-index: 150;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+.links.open {
+  display: flex;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+  body.dark-mode .links{
+   
+  background-color:#1e1e1e;
+
+  }
+
+  
+}
+
+
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 500px) {
+  .menu-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+ 
+  
+}
+
+
+
+/* ========================
+   🌙 Dark Mode Overrides
+======================== */
+/* /\* Dark mode overrides \*/ 
 body.dark-mode {
   background: #121212;
   color: #e0e0e0;
@@ -403,12 +463,11 @@ body.dark-mode {
 body.dark-mode header {
   background: #1e1e1e;
 }
-
-body.dark-mode .main-heading {
+body.dark-mode .main-heading{
   color: rgb(253 224 71);
-}
 
-body.dark-mode .main-heading:hover {
+}
+body.dark-mode .main-heading:hover{
   color: rgb(255, 237, 128);
 }
 
@@ -419,6 +478,7 @@ body.dark-mode .workout-details {
 
 body.dark-mode .workout-details h4 {
   color: rgb(253 224 71);
+
 }
 
 body.dark-mode .about-page {
@@ -437,8 +497,7 @@ body.dark-mode form {
   background: #1e1e1e;
 }
 
-body.dark-mode input,
-body.dark-mode select {
+body.dark-mode input {
   background: #2c2c2c;
   color: #fff;
   border: 1px solid #444;
@@ -451,6 +510,7 @@ body.dark-mode input:focus {
 body.dark-mode form button {
   background-color: rgb(253 224 71);
   color: var(--dark-text);
+
 }
 
 body.dark-mode .edit-btn {
@@ -466,50 +526,51 @@ body.dark-mode .error {
   border-color: #ff4081;
   color: #ff80ab;
 }
-
-body.dark-mode .mode-btn {
-  border: 1px solid rgb(253 224 71);
+body.dark-mode .mode-btn{
+  border: 1px solid  rgb(253 224 71);
 }
-
-body.dark-mode label {
+body.dark-mode label{
+  color: #e0e0e0;
+}
+body.dark-mode .menu-toggle svg{
   color: #e0e0e0;
 }
 
-body.dark-mode .menu-toggle svg {
-  color: #e0e0e0;
-}
 
-body.dark-mode nav .active {
-  color: rgb(253 224 71);
-}
-
-/* -------------------------------
-   🌗 Theme Toggle Button
---------------------------------- */
-.mode-btn {
+.mode-btn{
   all: unset;
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
   border: 1px solid #3a86ff;
-  padding: 5px 15px;
   outline: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+   
 }
-
-/* -------------------------------
-   📍 Active Link Styling
---------------------------------- */
 nav .active {
   font-weight: bold;
   color: var(--primary);
+
+}
+body.dark-mode nav .active{
+   font-weight: bold;
+  color: rgb(253 224 71)
 }
 
-/* -------------------------------
+
+
+/* ========================
    🔴 Blinking Dot
---------------------------------- */
+======================== */
+/* /\* Styles for blinking dot \*/ 
+
 .blink-wrapper {
   position: relative;
   display: inline-block;
+ 
 }
 
 .blink-me {
@@ -518,92 +579,207 @@ nav .active {
   height: 8px;
   display: inline-block;
   border-radius: 50%;
-  background: #3b82f6;
+  background: #3b82f6; /* Primary blue color */
   position: absolute;
   top: 12px;
   right: -12px;
 }
 
+
+
+/* ========================
+   🎯 Blinking Animation
+======================== */
+/* /\* Pulsing Dot Animation \*/ 
 @keyframes pulseColor {
   0% {
     transform: scale(1);
     opacity: 1;
-    background: #3b82f6;
+    background: #3b82f6; /* Primary blue color */
   }
   50% {
     transform: scale(1.5);
     opacity: 0.7;
-    background: #2563eb;
+    background: #2563eb; /* Lighter blue shade */
   }
   100% {
     transform: scale(1);
     opacity: 1;
-    background: #3b82f6;
+    background: #3b82f6; /* Primary blue color */
   }
 }
 
+
 body.dark-mode .blink-me {
   animation: pulseYellow 2s infinite;
-  background: #fde047;
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #fde047; /* Base yellow */
+  position: absolute;
+  top: 12px;
+  right: -12px;
 }
 
+
+/* ========================
+   🌕 Dark Mode Dot Animation
+======================== */
+/* /\* Pulsing Yellow Dot Animation \*/ 
 @keyframes pulseYellow {
   0% {
     transform: scale(1);
     opacity: 1;
-    background: #fde047;
+    background: #fde047; /* Base yellow */
   }
   50% {
     transform: scale(1.5);
     opacity: 0.7;
-    background: #fff3a3;
+    background: #fff3a3; /* Lighter yellow */
   }
   100% {
     transform: scale(1);
     opacity: 1;
-    background: #fde047;
+    background: #fde047; /* Base yellow again */
   }
 }
 
 @media (max-width: 768px) {
-  .mode-btn {
+  .mode-btn{
     font-size: 12px;
   }
-
-  .blink-me {
+  .blink-me{
     top: 7px;
   }
-
-  body.dark-mode .blink-me {
+  body.dark-mode .blink-me{
     top: 7px;
   }
 }
 
-/* -------------------------------
-   📅 Dates & Meta Info
---------------------------------- */
+
 .date-label {
   font-size: 0.9rem;
   color: var(--light-text);
   font-style: italic;
 }
 
-.dates {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-
-/* -------------------------------
-   📋 Details Section
---------------------------------- */
-.details {
+.details{
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
 }
+.total-workouts-container {
+  padding: 1rem; /* p-4 */
+  margin-bottom: 1.5rem; /* mb-6 */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid #e5e7eb; /* border-gray-200 */
+  background-color: #ffffff; /* bg-white */
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.total-workouts-heading {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  color: #1f2937; /* text-gray-800 */
+}
+
+.total-workouts-count {
+  margin-left: 0.5rem; /* ml-2 */
+  color: #60a5fa; /* text-blue-400 */
+}
+.no-workouts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* or 100vh if you want full page height */
+  font-size: 2.2rem;
+  color: var(--dark-text);
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+
+body.dark-mode .no-workouts{
+  color:#e5e5e5;
+}
+
+
+
+/* ========================
+   🌙 Dark Mode Overrides
+======================== */
+
+body.dark-mode .total-workouts-container {
+  background-color: #2a2a2a; /* dark:bg-neutral-800 */
+  border-color: #3f3f3f;     /* dark:border-neutral-700 */
+}
+
+body.dark-mode .total-workouts-heading {
+  color: #e5e5e5; /* dark:text-gray-200 */
+}
+
+body.dark-mode .total-workouts-count {
+  color: #fde047; /* dark:text-yellow-400 */
+}
+
+
+.total-workouts {
+  display: grid;
+  grid-template-columns: 1fr; /* Default: 1 column */
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  /* padding: 1rem; */
+}
+
+/* On medium+ screens: 2 columns */
+@media (min-width: 768px) {
+  .total-workouts {
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  
+}
+
+/* Make workout cards stretch full width of grid cell */
+.workout-details {
+  width: 100%;
+  margin: 0 auto;
+  
+
+}
+
+select {
+  padding: 12px 14px;
+  margin: 8px 0 20px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background: #fff;
+  color: var(--dark-text);
+  transition: background-color 0.3s ease, color 0.3s ease, var(--transition);
+}
+
+select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+body.dark-mode select {
+  background: #2c2c2c;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+
 
 .details p strong {
   color: var(--dark-text);
@@ -615,84 +791,21 @@ body.dark-mode .details p strong {
   color: #e0e0e0;
 }
 
-/* -------------------------------
-   📊 Workout Stats Section
---------------------------------- */
-.total-workouts-container {
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-              0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  background-color: #ffffff;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+
+
+
+input,
+select {
+  background-color: #f9f9f9;
 }
 
-.total-workouts-heading {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1f2937;
+body.dark-mode input,
+body.dark-mode select {
+  background-color: #1e1e1e;
 }
 
-.total-workouts-count {
-  margin-left: 0.5rem;
-  color: #60a5fa;
-}
 
-body.dark-mode .total-workouts-container {
-  background-color: #2a2a2a;
-  border-color: #3f3f3f;
-}
 
-body.dark-mode .total-workouts-heading {
-  color: #e5e5e5;
-}
-
-body.dark-mode .total-workouts-count {
-  color: #fde047;
-}
-
-/* -------------------------------
-   🔳 Grid Layout for Cards
---------------------------------- */
-.total-workouts {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .total-workouts {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* -------------------------------
-   📭 No Workouts Message
---------------------------------- */
-.no-workouts {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  font-size: 2.2rem;
-  color: var(--dark-text);
-  grid-column: 1 / -1;
-  text-align: center;
-}
-
-body.dark-mode .no-workouts {
-  color: #e5e5e5;
-}
-
-/* -------------------------------
-   🧮 Inline Form Fields
---------------------------------- */
 .inline-inputs {
   display: flex;
   gap: 15px;
@@ -701,4 +814,15 @@ body.dark-mode .no-workouts {
 .inline-inputs input {
   flex: 1;
   margin: 8px 0 20px;
+}
+
+
+
+/* ========================
+   🧯 Prevent Horizontal Scroll
+======================== */
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }

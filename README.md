@@ -11,7 +11,7 @@ Track, view, and manage your workouts with ease. Built with a modern **React fro
 
 ##  Screenshots
 
-(https://github.com/user-attachments/assets/f4e8d2ad-e05c-4bef-904a-0d574d6a7ddd)
+[https://github.com/user-attachments/assets/f4e8d2ad-e05c-4bef-904a-0d574d6a7ddd]
 
 ## Tech Stack
 

@@ -14,7 +14,7 @@ const WorkoutDetails = ({ workout }) => {
   const [newTargetMuscle, setNewTargetMuscle] = useState(workout.targetMuscle);
 
   // const URL = "http://localhost:8080";
-      const URL = process.env.REACT_APP_URL;
+  const URL = process.env.REACT_APP_URL;
 
 
   const handleDelete = async () => {
@@ -60,7 +60,6 @@ const WorkoutDetails = ({ workout }) => {
     <div className="workout-details">
       {isEditing ? (
         <form onSubmit={handleUpdate} className="edit-form">
-          {/* <label>Title:</label> */}
           <input
             type="text"
             placeholder="title"
@@ -68,7 +67,6 @@ const WorkoutDetails = ({ workout }) => {
             onChange={(e) => setNewTitle(e.target.value)}
             required
           />
-          {/* <label>Load:</label> */}
           <input
             type="number"
             placeholder="load"
@@ -76,7 +74,6 @@ const WorkoutDetails = ({ workout }) => {
             onChange={(e) => setNewLoad(e.target.value)}
             required
           />
-          {/* <label>Reps:</label> */}
           <input
             type="number"
             placeholder="reps"

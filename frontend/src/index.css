@@ -346,6 +346,7 @@ button.loading::after {
   }
   
 .links {
+  display: none;
   position: absolute;
   font-size: 12px;
   top: 52px;
@@ -357,19 +358,16 @@ button.loading::after {
   width: 150px;
   padding: 10px;
   box-shadow: var(--shadow);
+  z-index: 150;
+  opacity: 0;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease;
-  z-index: 150;
-  pointer-events: none;
-  visibility: hidden;
-  opacity: 0;
 }
 
 .links.open {
-  transform: translateX(0);
-  pointer-events: auto;
-  visibility: visible;
+  display: flex;
   opacity: 1;
+  transform: translateX(0);
 }
 
   body.dark-mode .links{

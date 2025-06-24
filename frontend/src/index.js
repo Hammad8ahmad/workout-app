@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+// import './index.css';
+import "./index_commented.css"
 import App from './App';
 import { WorkoutsContextProvider } from './context/WorkoutsContext';
 import { ThemeContextProvider } from './context/ThemeContext';

@@ -345,34 +345,40 @@ button.loading::after {
     z-index: 200;
   }
   
+.links {
+  position: absolute;
+  font-size: 12px;
+  top: 52px;
+  right: 0;
+  background: white;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 150px;
+  padding: 10px;
+  box-shadow: var(--shadow);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+  z-index: 150;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
 
-  .links {
-    position: absolute;
-    font-size: 12px;
-    top: 52px;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    width: 150px;
-    padding: 10px;
-    box-shadow: var(--shadow);
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 150;
-  }
+.links.open {
+  transform: translateX(0);
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
   body.dark-mode .links{
    
   background-color:#1e1e1e;
 
   }
 
-  .links.open {
-    transform: translateX(0);
-  }
-
- 
+  
 }
 
 

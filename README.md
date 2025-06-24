@@ -64,12 +64,7 @@ Backend
 - Dockerized Spring Boot app
 - Free domain via DuckDNS + HTTPS via Let’s Encrypt
 
-## Project Structure
 
-train-log/
-├── frontend/         # React frontend (CRA + CSS)
-├── backend/         # Spring Boot backend
-├── README.md
 
 
 

@@ -11,8 +11,10 @@ Track, view, and manage your workouts with ease. Built with a modern **React fro
 
 ##  Screenshots
 
-![Home Screenshot](images/home.png)
+Home page:
+![workout](images/workout.png)
 
+Workouts page:
 ![Total workouts](images/total-workouts.png)
 
 ## Tech Stack

@@ -6,7 +6,7 @@ Track, view, and manage your workouts with ease. Built with a modern **React fro
 
 ##  Live Demo
 
-[Demo](https://my-train-log.vercel.app/)
+Check it out! [Live Site](https://my-train-log.vercel.app/)
 
 
 ##  Screenshots

@@ -3,7 +3,7 @@ import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 
 // components
 import WorkoutDetails from "../components/WorkoutDetails"
-import WorkoutForm from "../components/WorkoutForm"
+// import WorkoutForm from "../components/WorkoutForm"
 
 const Workouts = () => {
   const { workouts, dispatch } = useWorkoutsContext()
@@ -11,7 +11,10 @@ const Workouts = () => {
   const [filter, setFilter] = useState("")  // ✅ correctly named
   const [filteredWorkouts, setFilteredWorkouts] = useState([])
 
-  const URL = "http://localhost:8080"
+    const URL = process.env.REACT_APP_URL;
+
+
+  // const URL = "http://localhost:8080"
 
   // Fetch workouts once
   useEffect(() => {

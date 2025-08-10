@@ -5,6 +5,7 @@ import com.backend.backend.Domain.Entity.Workout;
 import com.backend.backend.Mappers.WorkoutMapper;
 import com.backend.backend.Repository.WorkoutRepository;
 import com.backend.backend.Services.WorkoutService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,6 +46,12 @@ public class WorkoutController {
        Workout createdWorkout =  workoutService.CreateWorkout(workoutMapper.fromDto(workoutDto));
        return workoutMapper.toDto(createdWorkout);
     }
+    // auth check
+    @GetMapping(path = "/auth")
+    public String greet(HttpServletRequest request) {
+        return "hi hammad" + request.getSession().getId();
+    }
+
 
 //   Delete a workout
 
